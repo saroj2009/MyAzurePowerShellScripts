@@ -43,10 +43,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="AzurePowerShellScriptRepository\GetAllResourcesAndExportCsv-2.txt" />
-    <Content Include="AzurePowerShellScriptRepository\GetAllResourcesAndExportCsv-1.txt" />
+    <Content Include="GetAllResourcesAndExportCsv-2.txt" />
+    <Content Include="GetAllResourcesAndExportCsv-1.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="AzurePowerShellScriptRepository\" />
     <Folder Include="Properties\" />
   </ItemGroup>
   <PropertyGroup>
