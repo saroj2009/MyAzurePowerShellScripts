@@ -1,0 +1,57 @@
+﻿#log-in to Azure Subscription
+
+Login-AzureRmAccount
+
+# To get all the Resource Groups in current subscription
+
+$RGName = Get-AzureRmResourceGroup 
+
+# For displaying the names of the resource groups in current subscription
+
+$count = $RGName.Count
+Write-Host 'Resource Groups in your Subscription:'
+Write-Host ''
+if ($count -gt 1)
+{
+while($count -gt 0)
+{
+$Var=$RGName.GetValue($count-1)
+$Var.ResourceGroupName
+$count--
+}
+}
+else
+{
+$RGName.ResourceGroupName
+}
+Write-Host ''
+
+# Run-time Prompt for the desired Resource Group
+
+$RG = Read-Host -Prompt 'Enter the name of desired Resource Group:'
+
+# Cmdlet to get the resources in a Resource Group | Filter the output according to need | Exporting the output to desired path 
+$path = "C:\AzureresourcesList" + [DateTime]::Now.ToString("yyyyMMdd") + ".csv" 
+
+if (Test-Path $path) 
+{ 
+    "File $path already exists. Delete? y/n [Default: y)"
+    $remove = read-host
+    if([String]::IsNullOrWhiteSpace($remove) -or $remove.ToLower().Equals('y')) 
+	{
+        Remove-Item $path
+
+        Find-AzureRmResource -ResourceGroupNameContains $RG | Select-Object -Property Name,ResourceType, ResourceGroupName | Export-Csv $path
+Write-Host ''
+Write-Host '** The output file has been exported successfully **'
+    }
+}
+else
+{
+    Find-AzureRmResource -ResourceGroupNameContains $RG | Select-Object -Property Name,ResourceType, ResourceGroupName | Export-Csv $path
+Write-Host ''
+Write-Host '** The output file has been exported successfully **'
+
+}
+
+

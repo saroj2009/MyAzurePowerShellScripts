@@ -1,0 +1,22 @@
+﻿#log-in to Azure Subscription
+
+Login-AzureRmAccount
+
+# To get all the Resource Groups in current subscription
+
+$RGName = Get-AzureRmResourceGroup 
+$RGName2 = $RGName.ResourceGroupName
+
+# For displaying the names of the resource groups in current subscription
+
+Write-Host ''
+$path = "C:\AzureresourcesList" + [DateTime]::Now.ToString("yyyyMMdd") + ".csv"
+
+foreach ($RG in $RGName2){
+
+Find-AzureRmResource -ResourceGroupNameContains $RG | Select-Object -Property Name,ResourceType,ResourceGroupName | Export-Csv $path -Append
+Write-Host ''
+Write-Host $RG' : resources has been exported successfully **'
+}
+
+
