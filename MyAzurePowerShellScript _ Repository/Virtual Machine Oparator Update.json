@@ -1,0 +1,20 @@
+{
+    "Name":  "Hackathon Virtual Machine Operator",
+	"Id": "b745c7be-770f-455f-8a28-e440269fc717",
+    "IsCustom":  true,
+    "Description":  "Can monitore and restart Virtual Machine.",
+    "Actions":  [
+                    
+                    "Microsoft.Compute/*/read",
+                    "Microsoft.Compute/VirtualMachines/start/action",
+                    "Microsoft.Compute/VirtualMachines/restart/action",
+					"Microsoft.Resources/subscriptions/resourceGroups/read"
+								
+                ],
+    "NotActions":  [
+ 
+                   ],
+    "AssignableScopes":  [
+                               "/subscriptions/dd68a4fb-e8cf-4577-a15b-217f4c493451"
+                         ]
+}
