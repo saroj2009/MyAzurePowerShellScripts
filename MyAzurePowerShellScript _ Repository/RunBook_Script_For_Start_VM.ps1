@@ -28,7 +28,7 @@ foreach($rgN in $rgName)
     if($vmN.count -gt 0){
         foreach($vm in $vmN){
             Start-AzureRmVM -Name $vm -ResourceGroupName $rgN
-            Write-Host $vm + "is stopped"
+            Write-Host $vm + "is started"
         }
     }
 }
