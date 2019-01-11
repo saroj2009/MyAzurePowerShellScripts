@@ -1,6 +1,6 @@
 ﻿<#******************************************************************************************************************************************
-Created By    : Priti Bhunia
-Created Date  : 29-March-2018
+Created By    : 
+Created Date  :
 Tested By     : 
 Tested Date   : 
 Description   :  Authentication using AutomationConnection & Script will start the VM
